@@ -38,8 +38,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var listSize = ['',''];
-  Map<dynamic, dynamic> apiData = {'docs':[]};
+  var listSize = ['', ''];
+  Map<dynamic, dynamic> apiData = {'docs': []};
   Map<String, String> headers = {
     'Authorization': 'Bearer 6DMnrpLiKW4BJK1_7X18'
   };
@@ -64,7 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // print(apiData);
     // print(apiData['docs']['name']);
     print(apiData['docs'].length);
-
   }
 
   @override
@@ -72,12 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // print(apiData['docs'].length);
     // print(apiData['docs']);
     // debugPrint('$url$movies');
-    return 
-           Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -88,21 +87,22 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 height: 475,
                 // color: Colors.green,
-                child: ListView.builder(itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('name:  ${apiData['docs'][index]['name']} $index'),
-                  );
-
-                },
-                itemCount:  apiData['docs'].length,),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          'name:  ${apiData['docs'][index]['name']}, index $index'),
+                    );
+                  },
+                  itemCount: apiData['docs'].length,
+                ),
                 // itemCount:  listSize.length,),
               )
-             
             ],
           ),
         ),
-      )
-    ;
+      ),
+    );
   }
 }
